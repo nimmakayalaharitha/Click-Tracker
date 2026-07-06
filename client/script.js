@@ -36,7 +36,7 @@ document.addEventListener("click", async function (event) {
 
     try {
 
-        const response = await fetch("http://localhost:5000/click", {
+        const response = await fetch("https://click-tracker-z9ik.onrender.com/click", {
 
             method: "POST",
 
