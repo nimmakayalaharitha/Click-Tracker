@@ -1,4 +1,4 @@
-fetch("http://localhost:5000/clicks")
+fetch("https://click-tracker-z9ik.onrender.com/clicks")
 .then(res => res.json())
 .then(data => {
 
