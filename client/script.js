@@ -15,8 +15,7 @@ document.addEventListener("click", async function (event) {
 
         tag: element.tagName,
 
-        text: element.innerText,
-
+        text: card ? card.innerText.trim() : element.innerText.trim(),
         elementId: card ? card.id : element.id,
 
         class: card ? "card" : element.className,
