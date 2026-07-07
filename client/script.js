@@ -17,9 +17,8 @@ document.addEventListener("click", async function (event) {
 
         text: element.innerText,
 
-        id: element.id,
+        elementId: card ? card.id : element.id,
 
-        // If clicked inside a card, save class as "card"
         class: card ? "card" : element.className,
 
         x: event.clientX,

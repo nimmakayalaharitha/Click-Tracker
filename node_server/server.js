@@ -62,7 +62,7 @@ app.post("/click", (req, res) => {
         [
             click.tag,
             click.text,
-            click.id,
+            click.elementId,
             click.class,
             click.x,
             click.y,

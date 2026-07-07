@@ -4,7 +4,9 @@ fetch("https://click-tracker-z9ik.onrender.com/clicks")
 
     let login = 0;
     let register = 0;
-    let card = 0;
+    let card1 = 0;
+    let card2 = 0;
+    let card3 = 0;
     let empty = 0;
 
     data.forEach(click => {
@@ -19,9 +21,19 @@ fetch("https://click-tracker-z9ik.onrender.com/clicks")
             register++;
 
         }
-        else if (click.class && click.class.includes("card")) {
+        else if (click.elementId === "card1") {
 
-            card++;
+            card1++;
+
+        }
+        else if (click.elementId === "card2") {
+
+            card2++;
+
+        }
+        else if (click.elementId === "card3") {
+
+            card3++;
 
         }
         else {
@@ -35,10 +47,13 @@ fetch("https://click-tracker-z9ik.onrender.com/clicks")
     document.getElementById("totalClicks").innerText = data.length;
     document.getElementById("loginClicks").innerText = login;
     document.getElementById("registerClicks").innerText = register;
-    document.getElementById("cardClicks").innerText = card;
+    document.getElementById("card1Clicks").innerText = card1;
+    document.getElementById("card2Clicks").innerText = card2;
+    document.getElementById("card3Clicks").innerText = card3;
     document.getElementById("emptyClicks").innerText = empty;
 
 });
+
 setInterval(() => {
     location.reload();
 }, 3000);
