@@ -9,25 +9,24 @@ document.addEventListener("click", async function (event) {
     // Find the nearest parent having class="card"
     const card = element.closest(".card");
 
+    let elementId = element.id;
+    let text = element.innerText.trim();
+
+    if (card) {
+        elementId = card.getAttribute("id");
+        text = card.querySelector("h3").innerText;
+    }
+
     const clickData = {
-
         totalClicks: totalClicks,
-
         tag: element.tagName,
-
-        text: card ? card.innerText.trim() : element.innerText.trim(),
-        elementId: card ? card.id : element.id,
-
+        text: text,
+        elementId: elementId,
         class: card ? "card" : element.className,
-
         x: event.clientX,
-
         y: event.clientY,
-
         page: window.location.pathname,
-
         time: new Date().toLocaleString()
-
     };
 
     console.log("Card Found:", card);
