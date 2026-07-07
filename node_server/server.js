@@ -29,6 +29,26 @@ app.get("/clicks", (req, res) => {
     });
 
 });
+app.get("/dashboard", (req, res) => {
+
+    db.all(`
+        SELECT
+            text,
+            COUNT(*) AS totalClicks
+        FROM clicks
+        GROUP BY text
+        ORDER BY totalClicks DESC
+    `, [], (err, rows) => {
+
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+
+        res.json(rows);
+
+    });
+
+});
 
 // Save click
 app.post("/click", (req, res) => {
