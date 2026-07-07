@@ -30,8 +30,9 @@ document.addEventListener("click", async function (event) {
 
     };
 
+    console.log("Card Found:", card);
+    console.log("Card ID:", card ? card.id : "No Card");
     console.log(clickData);
-
     try {
 
         const response = await fetch("https://click-tracker-z9ik.onrender.com/click", {
