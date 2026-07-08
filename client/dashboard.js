@@ -1,59 +1,68 @@
-fetch("https://click-tracker-z9ik.onrender.com/clicks")
-.then(res => res.json())
-.then(data => {
+function loadDashboard() {
 
-    let login = 0;
-    let register = 0;
-    let card1 = 0;
-    let card2 = 0;
-    let card3 = 0;
-    let empty = 0;
+    fetch("https://click-tracker-z9ik.onrender.com/clicks")
+    .then(res => res.json())
+    .then(data => {
 
-    data.forEach(click => {
+        let login = 0;
+        let register = 0;
+        let card1 = 0;
+        let card2 = 0;
+        let card3 = 0;
+        let empty = 0;
 
-        if (click.elementId === "loginBtn") {
+        data.forEach(click => {
 
-            login++;
+            if (click.elementId === "loginBtn") {
 
-        }
-        else if (click.elementId === "registerBtn") {
+                login++;
 
-            register++;
+            }
+            else if (click.elementId === "registerBtn") {
 
-        }
-        else if (click.elementId === "card1") {
+                register++;
 
-            card1++;
+            }
+            else if (click.elementId === "card1") {
 
-        }
-        else if (click.elementId === "card2") {
+                card1++;
 
-            card2++;
+            }
+            else if (click.elementId === "card2") {
 
-        }
-        else if (click.elementId === "card3") {
+                card2++;
 
-            card3++;
+            }
+            else if (click.elementId === "card3") {
 
-        }
-        else {
+                card3++;
 
-            empty++;
+            }
+            else {
 
-        }
+                empty++;
 
+            }
+
+        });
+
+        document.getElementById("totalClicks").innerText = data.length;
+        document.getElementById("loginClicks").innerText = login;
+        document.getElementById("registerClicks").innerText = register;
+        document.getElementById("card1Clicks").innerText = card1;
+        document.getElementById("card2Clicks").innerText = card2;
+        document.getElementById("card3Clicks").innerText = card3;
+        document.getElementById("emptyClicks").innerText = empty;
+
+    })
+    .catch(error => {
+        console.error("Error loading dashboard:", error);
     });
 
-    document.getElementById("totalClicks").innerText = data.length;
-    document.getElementById("loginClicks").innerText = login;
-    document.getElementById("registerClicks").innerText = register;
-    document.getElementById("card1Clicks").innerText = card1;
-    document.getElementById("card2Clicks").innerText = card2;
-    document.getElementById("card3Clicks").innerText = card3;
-    document.getElementById("emptyClicks").innerText = empty;
+}
 
-});
+// Load data immediately when the page opens
+loadDashboard();
 
-setInterval(() => {
-    location.reload();
-}, 3000);
+// Refresh only the data every 3 seconds (no page reload)
+setInterval(loadDashboard, 3000);
